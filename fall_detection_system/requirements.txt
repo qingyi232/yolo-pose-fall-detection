@@ -1,0 +1,32 @@
+# 核心依赖
+ultralytics>=8.0.0
+opencv-python>=4.8.0
+numpy>=1.24.0
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Web框架
+flask>=2.3.0
+flask-cors>=4.0.0
+flask-socketio>=5.3.0
+
+# 数据库
+sqlalchemy>=2.0.0
+sqlite3
+
+# 消息推送
+requests>=2.31.0
+
+# 可视化
+matplotlib>=3.7.0
+pillow>=10.0.0
+
+# 配置管理
+pyyaml>=6.0.0
+python-dotenv>=1.0.0
+
+# 日志
+loguru>=0.7.0
+
+# 定时任务
+apscheduler>=3.10.0

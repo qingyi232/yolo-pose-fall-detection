@@ -1,0 +1,17 @@
+# 数据集配置文件
+# 使用 fall-detection.v2i.yolov8 数据集
+
+# 数据集根目录（使用绝对路径更可靠）
+path: fall-detection.v2i.yolov8
+
+# 训练集和验证集路径（相对于path）
+train: train/images
+val: valid/images
+
+# 类别数量
+nc: 2
+
+# 类别名称
+names:
+  0: person
+  1: fall

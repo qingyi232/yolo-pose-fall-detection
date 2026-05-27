@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>系统E-R图</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: "SimSun", serif; 
+            background: white; 
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        .container { 
+            width: 800px; 
+            height: 500px;
+            position: relative;
+        }
+        .entity {
+            position: absolute;
+            border: 2px solid black;
+            padding: 10px 20px;
+            text-align: center;
+            background: white;
+        }
+        .entity-name {
+            font-weight: bold;
+            font-size: 14px;
+            border-bottom: 1px solid black;
+            padding-bottom: 5px;
+            margin-bottom: 8px;
+        }
+        .entity-attrs {
+            font-size: 12px;
+            text-align: left;
+            line-height: 1.6;
+        }
+        .pk { text-decoration: underline; }
+        .relation {
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            border: 2px solid black;
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
+        .relation span {
+            transform: rotate(-45deg);
+            font-size: 12px;
+        }
+        .line {
+            position: absolute;
+            background: black;
+        }
+        .label {
+            position: absolute;
+            font-size: 11px;
+            background: white;
+            padding: 2px 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 事件实体 -->
+        <div class="entity" style="left: 50px; top: 50px; width: 150px;">
+            <div class="entity-name">events（事件表）</div>
+            <div class="entity-attrs">
+                <span class="pk">id</span> 事件ID<br>
+                type 事件类型<br>
+                camera_id 摄像头ID<br>
+                timestamp 时间戳<br>
+                details 详情<br>
+                handled 处理状态
+            </div>
+        </div>
+
+        <!-- 统计实体 -->
+        <div class="entity" style="left: 320px; top: 50px; width: 150px;">
+            <div class="entity-name">statistics（统计表）</div>
+            <div class="entity-attrs">
+                <span class="pk">id</span> 统计ID<br>
+                date 日期<br>
+                camera_id 摄像头ID<br>
+                fall_count 摔倒次数<br>
+                intrusion_count 闯入次数
+            </div>
+        </div>
+
+        <!-- 摄像头实体 -->
+        <div class="entity" style="left: 580px; top: 50px; width: 150px;">
+            <div class="entity-name">cameras（摄像头表）</div>
+            <div class="entity-attrs">
+                <span class="pk">id</span> 摄像头ID<br>
+                name 名称<br>
+                url 地址<br>
+                enabled 启用状态<br>
+                location 位置
+            </div>
+        </div>
+
+        <!-- 检测区域实体 -->
+        <div class="entity" style="left: 50px; top: 300px; width: 150px;">
+            <div class="entity-name">detection_zones（区域表）</div>
+            <div class="entity-attrs">
+                <span class="pk">id</span> 区域ID<br>
+                name 区域名称<br>
+                camera_id 摄像头ID<br>
+                points 坐标点<br>
+                color 颜色
+            </div>
+        </div>
+
+        <!-- 用户实体 -->
+        <div class="entity" style="left: 320px; top: 300px; width: 150px;">
+            <div class="entity-name">users（用户表）</div>
+            <div class="entity-attrs">
+                <span class="pk">id</span> 用户ID<br>
+                username 用户名<br>
+                password_hash 密码<br>
+                role 角色<br>
+                email 邮箱
+            </div>
+        </div>
+
+        <!-- 预警配置实体 -->
+        <div class="entity" style="left: 580px; top: 300px; width: 150px;">
+            <div class="entity-name">alert_configs（预警配置表）</div>
+            <div class="entity-attrs">
+                <span class="pk">id</span> 配置ID<br>
+                name 配置名称<br>
+                event_type 事件类型<br>
+                enabled 启用状态<br>
+                cooldown 冷却时间
+            </div>
+        </div>
+
+        <!-- 关系线和标签 -->
+        <!-- 事件-摄像头 -->
+        <div class="line" style="left: 200px; top: 100px; width: 380px; height: 2px;"></div>
+        <div class="label" style="left: 380px; top: 85px;">N:1</div>
+
+        <!-- 统计-摄像头 -->
+        <div class="line" style="left: 470px; top: 100px; width: 110px; height: 2px;"></div>
+        <div class="label" style="left: 510px; top: 85px;">N:1</div>
+
+        <!-- 区域-摄像头 -->
+        <div class="line" style="left: 655px; top: 180px; width: 2px; height: 120px;"></div>
+        <div class="line" style="left: 200px; top: 350px; width: 457px; height: 2px;"></div>
+        <div class="label" style="left: 400px; top: 335px;">N:1</div>
+
+        <!-- 事件-区域 -->
+        <div class="line" style="left: 125px; top: 180px; width: 2px; height: 120px;"></div>
+        <div class="label" style="left: 100px; top: 230px;">N:1</div>
+    </div>
+</body>
+</html>

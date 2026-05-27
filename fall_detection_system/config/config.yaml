@@ -1,0 +1,72 @@
+alert:
+  cooldown: 1
+  email:
+    password: ''
+    receivers: []
+    sender: ''
+    smtp_port: 587
+    smtp_server: ''
+  enabled: true
+  methods:
+    email: false
+    sound: true
+    webhook: false
+  webhook_url: ''
+api:
+  host: 0.0.0.0
+  port: 5000
+  secret_key: your-secret-key
+database:
+  path: data/fall_detection.db
+fall_detection:
+  angle_threshold: 45
+  confirm_frames: 5
+  enabled: true
+  height_ratio_threshold: 1.0
+  keypoint_confidence: 0.3
+intrusion:
+  enabled: true
+  zones:
+  - color:
+    - 255
+    - 0
+    - 0
+    id: 1
+    name: Zone1
+    points:
+    - - 0
+      - 0
+    - - 1280
+      - 0
+    - - 1280
+      - 720
+    - - 0
+      - 720
+logging:
+  level: INFO
+  path: logs/
+  retention: 7 days
+  rotation: 10 MB
+model:
+  confidence: 0.5
+  device: cpu
+  iou_threshold: 0.45
+  yolo_detect: yolov8n.pt
+  yolo_pose: yolov8n-pose.pt
+system:
+  debug: true
+  name: 摔倒检测与区域闯入系统
+  version: 1.0.0
+video:
+  fps: 30
+  frame_height: 720
+  frame_width: 1280
+  sources:
+  - enabled: true
+    id: 1
+    name: 摄像头1
+    url: 0
+  - enabled: false
+    id: 2
+    name: 摄像头2
+    url: rtsp://example.com/stream

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>论文表格</title>
+    <style>
+        body {
+            font-family: "SimSun", "宋体", serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            padding: 40px;
+            background: white;
+        }
+        h3 {
+            font-size: 14pt;
+            font-weight: bold;
+            text-align: center;
+            margin: 30px 0 15px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        td {
+            text-align: left;
+        }
+        .center {
+            text-align: center;
+        }
+        .section-title {
+            font-size: 16pt;
+            font-weight: bold;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #333;
+        }
+        .page-break {
+            page-break-after: always;
+            margin: 50px 0;
+            border-bottom: 1px dashed #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== 表3-1 系统非功能需求参数表 ==================== -->
+<h3>表3-1 系统非功能需求参数表</h3>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 25%;">非功能需求</th>
+            <th style="width: 75%;">具体参数</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="center">系统稳定性</td>
+            <td>视频流无卡顿，长时间运行稳定，单模块故障不影响整体</td>
+        </tr>
+        <tr>
+            <td class="center">系统实时性</td>
+            <td>预警响应时间≤1秒，视频帧处理延迟可控</td>
+        </tr>
+        <tr>
+            <td class="center">可移植性</td>
+            <td>支持Windows系统，兼容主流浏览器（Chrome、Firefox、Edge）</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== 表4-1 异常事件表（events） ==================== -->
+<h3>表4-1 异常事件表（events）</h3>
+<table>
+    <thead>
+        <tr>
+            <th>字段名</th>
+            <th>数据类型</th>
+            <th>主键</th>
+            <th>非空</th>
+            <th>说明</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="center">id</td>
+            <td class="center">INTEGER</td>
+            <td class="center">是</td>
+            <td class="center">是</td>
+            <td>事件唯一标识，自增</td>
+        </tr>
+        <tr>
+            <td class="center">type</td>
+            <td class="center">TEXT</td>
+            <td class="center">否</td>
+            <td class="center">是</td>
+            <td>事件类型（fall/intrusion）</td>
+        </tr>
+        <tr>
+            <td class="center">camera_id</td>
+            <td class="center">INTEGER</td>
+            <td class="center">否</td>
+            <td class="center">否</td>
+            <td>摄像头ID</td>
+        </tr>
+        <tr>
+            <td class="center">timestamp</td>
+            <td class="center">DATETIME</td>
+            <td class="center">否</td>
+            <td class="center">是</td>
+            <td>事件发生时间</td>
+        </tr>
+        <tr>
+            <td class="center">details</td>
+            <td class="center">TEXT</td>
+            <td class="center">否</td>
+            <td class="center">否</td>
+            <td>事件详情（JSON格式）</td>
+        </tr>
+        <tr>
+            <td class="center">handled</td>
+            <td class="center">INTEGER</td>
+            <td class="center">否</td>
+            <td class="center">是</td>
+            <td>处理状态（0未处理/1已处理）</td>
+        </tr>
+        <tr>
+            <td class="center">snapshot_path</td>
+            <td class="center">TEXT</td>
+            <td class="center">否</td>
+            <td class="center">否</td>
+            <td>截图路径</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== 表4-2 系统日志表（system_logs） ==================== -->
+<h3>表4-2 系统日志表（system_logs）</h3>
+<table>
+    <thead>
+        <tr>
+            <th>字段名</th>
+            <th>数据类型</th>
+            <th>主键</th>
+            <th>非空</th>
+            <th>说明</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="center">id</td>
+            <td class="center">INTEGER</td>
+            <td class="center">是</td>
+            <td class="center">是</td>
+            <td>日志唯一标识，自增</td>
+        </tr>
+        <tr>
+            <td class="center">level</td>
+            <td class="center">TEXT</td>
+            <td class="center">否</td>
+            <td class="center">否</td>
+            <td>日志级别（INFO/WARNING/ERROR）</td>
+        </tr>
+        <tr>
+            <td class="center">message</td>
+            <td class="center">TEXT</td>
+            <td class="center">否</td>
+            <td class="center">否</td>
+            <td>日志消息内容</td>
+        </tr>
+        <tr>
+            <td class="center">timestamp</td>
+            <td class="center">DATETIME</td>
+            <td class="center">否</td>
+            <td class="center">是</td>
+            <td>记录时间</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== 表4-3 统计数据表（statistics） ==================== -->
+<h3>表4-3 统计数据表（statistics）</h3>
+<table>
+    <thead>
+        <tr>
+            <th>字段名</th>
+            <th>数据类型</th>
+            <th>主键</th>
+            <th>非空</th>
+            <th>说明</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="center">id</td>
+            <td class="center">INTEGER</td>
+            <td class="center">是</td>
+            <td class="center">是</td>
+            <td>统计唯一标识，自增</td>
+        </tr>
+        <tr>
+            <td class="center">date</td>
+            <td class="center">DATE</td>
+            <td class="center">否</td>
+            <td class="center">否</td>
+            <td>统计日期</td>
+        </tr>
+        <tr>
+            <td class="center">camera_id</td>
+            <td class="center">INTEGER</td>
+            <td class="center">否</td>
+            <td class="center">否</td>
+            <td>摄像头ID</td>
+        </tr>
+        <tr>
+            <td class="center">fall_count</td>
+            <td class="center">INTEGER</td>
+            <td class="center">否</td>
+            <td class="center">是</td>
+            <td>摔倒次数，默认0</td>
+        </tr>
+        <tr>
+            <td class="center">intrusion_count</td>
+            <td class="center">INTEGER</td>
+            <td class="center">否</td>
+            <td class="center">是</td>
+            <td>闯入次数，默认0</td>
+        </tr>
+        <tr>
+            <td class="center">total_detections</td>
+            <td class="center">INTEGER</td>
+            <td class="center">否</td>
+            <td class="center">是</td>
+            <td>总检测次数，默认0</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== 表6-1 功能测试用例 ==================== -->
+<h3>表6-1 功能测试用例</h3>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 12%;">测试编号</th>
+            <th style="width: 20%;">测试模块</th>
+            <th style="width: 30%;">测试内容</th>
+            <th style="width: 38%;">预期结果</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="center">TC001</td>
+            <td class="center">视频流模块</td>
+            <td>打开本地摄像头</td>
+            <td>成功打开摄像头，显示实时画面</td>
+        </tr>
+        <tr>
+            <td class="center">TC002</td>
+            <td class="center">姿态估计模块</td>
+            <td>检测画面中的人体</td>
+            <td>正确检测人体并绘制骨架</td>
+        </tr>
+        <tr>
+            <td class="center">TC003</td>
+            <td class="center">摔倒检测模块</td>
+            <td>正常站立姿态</td>
+            <td>显示绿色骨架，无摔倒警告</td>
+        </tr>
+        <tr>
+            <td class="center">TC004</td>
+            <td class="center">摔倒检测模块</td>
+            <td>模拟摔倒姿态</td>
+            <td>显示红色骨架，触发摔倒警告</td>
+        </tr>
+        <tr>
+            <td class="center">TC005</td>
+            <td class="center">区域闯入模块</td>
+            <td>人体在区域外</td>
+            <td>无闯入警告</td>
+        </tr>
+        <tr>
+            <td class="center">TC006</td>
+            <td class="center">区域闯入模块</td>
+            <td>人体进入检测区域</td>
+            <td>触发闯入警告</td>
+        </tr>
+        <tr>
+            <td class="center">TC007</td>
+            <td class="center">预警模块</td>
+            <td>检测到异常事件</td>
+            <td>触发声音预警</td>
+        </tr>
+        <tr>
+            <td class="center">TC008</td>
+            <td class="center">数据库模块</td>
+            <td>保存事件记录</td>
+            <td>事件成功保存到数据库</td>
+        </tr>
+        <tr>
+            <td class="center">TC009</td>
+            <td class="center">API模块</td>
+            <td>获取系统状态</td>
+            <td>返回正确的系统状态JSON</td>
+        </tr>
+        <tr>
+            <td class="center">TC010</td>
+            <td class="center">Web界面</td>
+            <td>访问监控页面</td>
+            <td>正确显示视频流和统计数据</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== 表6-2 测试结果汇总 ==================== -->
+<h3>表6-2 测试结果汇总</h3>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 15%;">测试编号</th>
+            <th style="width: 15%;">测试结果</th>
+            <th style="width: 70%;">备注</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="center">TC001</td>
+            <td class="center">通过</td>
+            <td>摄像头正常打开，画面流畅</td>
+        </tr>
+        <tr>
+            <td class="center">TC002</td>
+            <td class="center">通过</td>
+            <td>人体检测准确，骨架绘制正确</td>
+        </tr>
+        <tr>
+            <td class="center">TC003</td>
+            <td class="center">通过</td>
+            <td>站立时显示绿色，无误报</td>
+        </tr>
+        <tr>
+            <td class="center">TC004</td>
+            <td class="center">通过</td>
+            <td>需要看到上半身才能准确检测</td>
+        </tr>
+        <tr>
+            <td class="center">TC005</td>
+            <td class="center">通过</td>
+            <td>区域外无警告</td>
+        </tr>
+        <tr>
+            <td class="center">TC006</td>
+            <td class="center">通过</td>
+            <td>进入区域后触发警告</td>
+        </tr>
+        <tr>
+            <td class="center">TC007</td>
+            <td class="center">通过</td>
+            <td>声音预警正常</td>
+        </tr>
+        <tr>
+            <td class="center">TC008</td>
+            <td class="center">通过</td>
+            <td>数据库记录正确</td>
+        </tr>
+        <tr>
+            <td class="center">TC009</td>
+            <td class="center">通过</td>
+            <td>API响应正常</td>
+        </tr>
+        <tr>
+            <td class="center">TC010</td>
+            <td class="center">通过</td>
+            <td>Web界面显示正常</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== 补充：九大功能模块对照表 ==================== -->
+<h3>表4-4 系统功能模块对照表</h3>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 10%;">模块编号</th>
+            <th style="width: 35%;">模块名称</th>
+            <th style="width: 25%;">对应文件</th>
+            <th style="width: 30%;">主要功能</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="center">模块1</td>
+            <td>多目标检测与人体姿态估计模块</td>
+            <td class="center">core/detector.py</td>
+            <td>YOLOv8检测、关键点提取</td>
+        </tr>
+        <tr>
+            <td class="center">模块2</td>
+            <td>视频流处理与数据采集模块</td>
+            <td class="center">core/video_stream.py</td>
+            <td>视频流读取、多线程采集</td>
+        </tr>
+        <tr>
+            <td class="center">模块3</td>
+            <td>系统配置与管理模块</td>
+            <td class="center">core/config_manager.py</td>
+            <td>YAML配置读写</td>
+        </tr>
+        <tr>
+            <td class="center">模块4</td>
+            <td>摔倒检测算法模块</td>
+            <td class="center">core/fall_detector.py</td>
+            <td>四种融合算法判断摔倒</td>
+        </tr>
+        <tr>
+            <td class="center">模块5</td>
+            <td>区域闯入检测模块</td>
+            <td class="center">core/intrusion_detector.py</td>
+            <td>多边形区域闯入检测</td>
+        </tr>
+        <tr>
+            <td class="center">模块6</td>
+            <td>事件分析与预警模块</td>
+            <td class="center">core/alert_manager.py</td>
+            <td>声音/邮件/Webhook预警</td>
+        </tr>
+        <tr>
+            <td class="center">模块7</td>
+            <td>机器运维与监控模块</td>
+            <td class="center">core/monitor.py</td>
+            <td>CPU/内存/GPU监控</td>
+        </tr>
+        <tr>
+            <td class="center">模块8</td>
+            <td>API服务与消息推送模块</td>
+            <td class="center">api/routes.py</td>
+            <td>RESTful API、WebSocket</td>
+        </tr>
+        <tr>
+            <td class="center">模块9</td>
+            <td>可视化与存储模块</td>
+            <td class="center">core/database.py<br>web/index.html</td>
+            <td>SQLite存储、Web界面</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== 补充：API接口列表 ==================== -->
+<h3>表5-1 系统API接口列表</h3>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 25%;">接口路径</th>
+            <th style="width: 12%;">请求方法</th>
+            <th style="width: 63%;">功能说明</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>/api/status</td>
+            <td class="center">GET</td>
+            <td>获取系统运行状态</td>
+        </tr>
+        <tr>
+            <td>/api/start</td>
+            <td class="center">POST</td>
+            <td>启动检测系统</td>
+        </tr>
+        <tr>
+            <td>/api/stop</td>
+            <td class="center">POST</td>
+            <td>停止检测系统</td>
+        </tr>
+        <tr>
+            <td>/api/config</td>
+            <td class="center">GET</td>
+            <td>获取系统配置</td>
+        </tr>
+        <tr>
+            <td>/api/config</td>
+            <td class="center">PUT</td>
+            <td>更新系统配置</td>
+        </tr>
+        <tr>
+            <td>/api/zones</td>
+            <td class="center">GET</td>
+            <td>获取所有检测区域</td>
+        </tr>
+        <tr>
+            <td>/api/zones</td>
+            <td class="center">POST</td>
+            <td>添加检测区域</td>
+        </tr>
+        <tr>
+            <td>/api/zones/{id}</td>
+            <td class="center">DELETE</td>
+            <td>删除检测区域</td>
+        </tr>
+        <tr>
+            <td>/api/events</td>
+            <td class="center">GET</td>
+            <td>查询事件列表</td>
+        </tr>
+        <tr>
+            <td>/api/statistics</td>
+            <td class="center">GET</td>
+            <td>获取统计数据</td>
+        </tr>
+        <tr>
+            <td>/api/video/{camera_id}</td>
+            <td class="center">GET</td>
+            <td>获取MJPEG视频流</td>
+        </tr>
+        <tr>
+            <td>/api/system/metrics</td>
+            <td class="center">GET</td>
+            <td>获取系统资源指标</td>
+        </tr>
+        <tr>
+            <td>/api/system/health</td>
+            <td class="center">GET</td>
+            <td>服务健康检查</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== 补充：人体17关键点表 ==================== -->
+<h3>表2-1 YOLOv8-Pose人体17关键点定义</h3>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 15%;">索引</th>
+            <th style="width: 25%;">英文名称</th>
+            <th style="width: 20%;">中文名称</th>
+            <th style="width: 40%;">说明</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td class="center">0</td><td class="center">nose</td><td class="center">鼻子</td><td>面部中心点</td></tr>
+        <tr><td class="center">1</td><td class="center">left_eye</td><td class="center">左眼</td><td>左眼中心</td></tr>
+        <tr><td class="center">2</td><td class="center">right_eye</td><td class="center">右眼</td><td>右眼中心</td></tr>
+        <tr><td class="center">3</td><td class="center">left_ear</td><td class="center">左耳</td><td>左耳位置</td></tr>
+        <tr><td class="center">4</td><td class="center">right_ear</td><td class="center">右耳</td><td>右耳位置</td></tr>
+        <tr><td class="center">5</td><td class="center">left_shoulder</td><td class="center">左肩</td><td>左肩关节</td></tr>
+        <tr><td class="center">6</td><td class="center">right_shoulder</td><td class="center">右肩</td><td>右肩关节</td></tr>
+        <tr><td class="center">7</td><td class="center">left_elbow</td><td class="center">左肘</td><td>左肘关节</td></tr>
+        <tr><td class="center">8</td><td class="center">right_elbow</td><td class="center">右肘</td><td>右肘关节</td></tr>
+        <tr><td class="center">9</td><td class="center">left_wrist</td><td class="center">左腕</td><td>左手腕</td></tr>
+        <tr><td class="center">10</td><td class="center">right_wrist</td><td class="center">右腕</td><td>右手腕</td></tr>
+        <tr><td class="center">11</td><td class="center">left_hip</td><td class="center">左髋</td><td>左髋关节</td></tr>
+        <tr><td class="center">12</td><td class="center">right_hip</td><td class="center">右髋</td><td>右髋关节</td></tr>
+        <tr><td class="center">13</td><td class="center">left_knee</td><td class="center">左膝</td><td>左膝关节</td></tr>
+        <tr><td class="center">14</td><td class="center">right_knee</td><td class="center">右膝</td><td>右膝关节</td></tr>
+        <tr><td class="center">15</td><td class="center">left_ankle</td><td class="center">左踝</td><td>左脚踝</td></tr>
+        <tr><td class="center">16</td><td class="center">right_ankle</td><td class="center">右踝</td><td>右脚踝</td></tr>
+    </tbody>
+</table>
+
+</body>
+</html>
