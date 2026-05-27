@@ -37,3 +37,12 @@ Thumbs.db
 *.sqlite
 *.bak
 .cursor/
+
+*.docx
+*.doc
+*.pdf
+*.pptx
+*.ppt
+*.wps
+*.xlsx
+*.xls
